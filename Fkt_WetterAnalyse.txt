@@ -1,0 +1,24 @@
+// OpenWeatherMap JSON Antwort parsen
+//var Wetter=JSON.parse(msg.payload);
+
+var x=1;
+var wetter = msg.payload.list[x].weather[0].description;
+var Niederschlag = msg.payload.list[x].weather[0].main;
+var Zeit = msg.payload.list[x].dt_txt;
+var MaxTemp = msg.payload.list[x].main.temp_max;
+var TempColor = ",0,0,210"; //kalt (blau)
+var Umbrella = global.get("Regenschirm") + global.get("off_day");
+var Thermometer = global.get("Temperatur") ;
+
+if (MaxTemp > 14){
+    TempColor = ",140,0,140"; //normale Jacke (violet)
+    if (MaxTemp > 21){
+        TempColor = ",210,0,0"; //kurze Hose (rot)
+    }
+}
+if (Niederschlag == "Rain"){
+    Umbrella = global.get("Regenschirm") + ",0,0,210";
+}
+
+var newMsg = [{payload:Umbrella},{payload:Thermometer + TempColor},{payload:MaxTemp +"°C, " + wetter + " @ " + Zeit}];
+return newMsg;

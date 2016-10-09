@@ -1,0 +1,15 @@
+// OpenWeatherMap JSON Antwort parsen
+var Nachrichten=msg.payload;
+var zeit = msg.time;
+
+var pos1 = msg.payload.search("S 6"); //S-Bahn S6
+var pos2 = msg.payload.search("2062"); //Interregio
+var StoerungTXT = "";
+var Stoerung = "off";
+
+if ((pos1 + pos2) > 0) {
+    Stoerung = "on";
+    StoerungTXT = msg.payload;
+} 
+
+return [{payload: Stoerung}, {payload: StoerungTXT}];

@@ -1,0 +1,1 @@
+[{"id":"48dc4e70.e766b","type":"rpi-neopixels","z":"c2c66ad0.e1aa68","name":"","pixels":"18","bgnd":"","fgnd":"","wipe":"40","mode":"pixelsneedle","rgb":"rgb","x":666.8264007568359,"y":386.4757080078125,"wires":[]}]
